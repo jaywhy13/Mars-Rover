@@ -73,3 +73,28 @@ class TestRover(unittest.TestCase):
         mars_rover.reset()
 
 
+class TestPlateau(unittest.TestCase):
+
+    def test_init(self):
+        plateau = Plateau(size=(5, 5))
+        self.assertEqual(plateau.size, (5, 5))
+        mars_rover = Rover(plateau=plateau)
+        self.assertEqual(mars_rover.plateau, plateau)
+
+    def test_boundary_constraints(self):
+        plateau = Plateau(
+            size=(1, 1),
+            constraint_classes=[BoundaryConstraint])
+        mars_rover = Rover(plateau=plateau)
+        self.assertTrue(mars_rover.can_move())
+        mars_rover.move()
+        self.assertFalse(mars_rover.can_move())
+        mars_rover.reset()
+        self.assertTrue(mars_rover.can_move())
+        mars_rover.turn_left()
+        mars_rover.move()
+        self.assertFalse(mars_rover.can_move())
+        mars_rover.reset()
+        mars_rover.turn_around()
+        self.assertFalse(mars_rover.can_move())
+
