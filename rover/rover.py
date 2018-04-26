@@ -45,3 +45,17 @@ class Rover(object):
         self.x = 0
         self.y = 0
         self.heading = HEADING_NORTH
+
+    def turn_left(self):
+        direction_index = DIRECTIONS.index(self.heading)
+        new_direction_index = (direction_index - 1) % len(DIRECTIONS)
+        self.heading = DIRECTIONS[new_direction_index]
+
+    def turn_right(self):
+        direction_index = DIRECTIONS.index(self.heading)
+        new_direction_index = (direction_index + 1) % len(DIRECTIONS)
+        self.heading = DIRECTIONS[new_direction_index]
+
+    def turn_around(self):
+        self.turn_right()
+        self.turn_right()
