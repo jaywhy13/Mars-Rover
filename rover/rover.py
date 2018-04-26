@@ -59,3 +59,15 @@ class Rover(object):
     def turn_around(self):
         self.turn_right()
         self.turn_right()
+
+    def move(self):
+        if not self.can_move():
+            return
+        self.x, self.y = self.coords_after_move
+
+    def can_move(self):
+        """ Checks our constraints to let us know whether we can move
+        """
+        if not self.plateau:
+            return True
+        return self.plateau.is_move_valid(rover=self)
