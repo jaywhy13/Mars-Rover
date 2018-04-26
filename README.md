@@ -2,12 +2,15 @@
 
 # Running the code
 
+```
 python main.py
+```
 
 # Running tests
 
+```
 python tests.py
-
+```
 
 # Description
 
