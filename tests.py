@@ -98,3 +98,42 @@ class TestPlateau(unittest.TestCase):
         mars_rover.turn_around()
         self.assertFalse(mars_rover.can_move())
 
+
+class TestParser(unittest.TestCase):
+
+    def setUp(self):
+        self.parser = Parser()
+
+    def test_parse_plateau_params(self):
+        parsed_params = self.parser.parse_plateau_params("Plateau:5 5")
+        self.assertEqual(
+            parsed_params.get("size"), (5, 5))
+
+    def test_parse_rover_params(self):
+        parsed_params = self.parser.parse_rover_params(
+            "Rover1 Landing:1 2 N")
+        self.assertEqual(parsed_params.get("x"), 1)
+        self.assertEqual(parsed_params.get("y"), 2)
+        self.assertEqual(parsed_params.get("heading"), "N")
+
+    def test_parse_rover_instructions(self):
+        instructions = list("LMLMLMLMM")
+        parsed_instructions = self.parser.parse_rover_instructions(
+            "Rover1 Instructions:{}".format("".join(instructions)))
+        self.assertEqual(parsed_instructions, instructions)
+
+    def test_parse_rover_instruction(self):
+        mars_rover = Rover()
+        self.parser.process_rover_instruction(
+            rover=mars_rover, instruction=ACTION_LEFT)
+        self.assertEqual(mars_rover.heading, HEADING_WEST)
+        mars_rover.reset()
+        self.parser.process_rover_instruction(
+            rover=mars_rover, instruction=ACTION_RIGHT)
+        self.assertEqual(mars_rover.heading, HEADING_EAST)
+        mars_rover.reset()
+        self.parser.process_rover_instruction(
+            rover=mars_rover, instruction=ACTION_MOVE)
+        self.assertEqual(mars_rover.coords.y, 1)
+
+
