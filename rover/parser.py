@@ -21,7 +21,7 @@ class Parser(object):
 
     ROVER_LANDING_INPUT = \
         r'(?P<rover_name>Rover[0-9]+) Landing:(?P<x>[0-9]+) (?P<y>[0-9]+) (?P<heading>[NSEW])'
-    ROVER_LANDING_INPUT_DESCRIPTION = 'Rover<number> Landing:<x> <y>'
+    ROVER_LANDING_INPUT_DESCRIPTION = 'Rover<number> Landing:<x> <y> <heading>'
 
     ROVER_INSTRUCTIONS_INPUT = \
         r'(?P<rover_name>Rover[0-9]+) Instructions:(?P<instructions>[MRL]+)'
@@ -29,17 +29,28 @@ class Parser(object):
         'Rover<number> Instructions:<instructions>'
 
     def process_input(self):
+        print(" ===================================")
+        print("Welcome to Mars\n")
+        print("Provide the Plateau params (format: {})".format(
+            Parser.PLATEAU_INPUT_DESCRIPTION))
         plateau = Plateau(**self.parse_plateau_params(line=input()))
-        positions = []
-        for i in range(2):
+        i = 0
+        while True:
             name = "Rover{}".format(i + 1)
+            print(
+                "Please provide landing for {} in "
+                "the format: {}".format(
+                    name, Parser.ROVER_LANDING_INPUT_DESCRIPTION))
             rover = Rover(**self.parse_rover_params(line=input()))
+            print(
+                "Please provide instructions for {} in "
+                "the format: {}".format(
+                    name, Parser.ROVER_INSTRUCTIONS_INPUT_DESCRIPTION))
             instructions = self.parse_rover_instructions(line=input())
             self.process_rover_instructions(
                 rover=rover, instructions=instructions)
-            positions.append(self.get_rover_position(name=name, rover=rover))
-        for position in positions:
-            print(position)
+            print(self.get_rover_position(name=name, rover=rover))
+            i += 1
 
     def parse_input_with_regex(
             self, text=None, regex=None, regex_description=None):
