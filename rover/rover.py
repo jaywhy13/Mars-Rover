@@ -38,3 +38,10 @@ class Rover(object):
         else:
             x -= 1
         return Coords(x, y)
+
+    def reset(self):
+        """ Move the rover back to 0,0 and reset the heading
+        """
+        self.x = 0
+        self.y = 0
+        self.heading = HEADING_NORTH
