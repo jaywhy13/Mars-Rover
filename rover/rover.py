@@ -18,3 +18,23 @@ class Rover(object):
         self.y = y
         self.heading = heading
         self.plateau = plateau
+
+    @property
+    def coords(self):
+        return Coords(self.x, self.y)
+
+    @property
+    def coords_after_move(self):
+        """ If we move, what would the new coords be?
+        """
+        x = self.x
+        y = self.y
+        if self.heading == HEADING_NORTH:
+            y += 1
+        elif self.heading == HEADING_SOUTH:
+            y -= 1
+        elif self.heading == HEADING_EAST:
+            x += 1
+        else:
+            x -= 1
+        return Coords(x, y)
