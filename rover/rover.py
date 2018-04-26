@@ -1,4 +1,4 @@
-from .constants import (
+from constants import (
     HEADING_NORTH,
     HEADING_SOUTH,
     HEADING_EAST,

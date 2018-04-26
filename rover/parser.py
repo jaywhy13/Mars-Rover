@@ -1,6 +1,6 @@
-from rover.rover import Rover
-from rover.plateau import Plateau
-from rover.constants import (
+from rover import Rover
+from plateau import Plateau
+from constants import (
     ACTION_LEFT,
     ACTION_RIGHT,
     ACTION_MOVE

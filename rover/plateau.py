@@ -1,4 +1,4 @@
-from rover.constraint import Constraint
+from constraint import Constraint
 
 
 class BoundaryConstraint(Constraint):
