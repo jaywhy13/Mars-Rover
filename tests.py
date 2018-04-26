@@ -143,3 +143,6 @@ class TestConstraint(unittest.TestCase):
         constraint = Constraint()
         self.assertTrue(constraint.can_move())
 
+
+if __name__ == '__main__':
+    unittest.main()
