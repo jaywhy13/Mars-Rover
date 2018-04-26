@@ -4,3 +4,8 @@ from .constants import (
     HEADING_EAST,
     DIRECTIONS
 )
+from collections import namedtuple
+
+Coords = namedtuple('Coords', ['x', 'y'])
+
+
