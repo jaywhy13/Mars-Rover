@@ -49,3 +49,27 @@ class TestRover(unittest.TestCase):
         mars_rover.turn_right()
         mars_rover.turn_around()
         self.assertEqual(mars_rover.heading, HEADING_EAST)
+
+    def test_movement(self):
+        mars_rover = Rover()
+        # test moving up
+        mars_rover.move()
+        self.assertEqual(mars_rover.coords, (0, 1))
+        mars_rover.reset()
+        # test moving down
+        mars_rover.turn_around()
+        mars_rover.move()
+        self.assertEqual(mars_rover.coords, (0, -1))
+        mars_rover.reset()
+        # test left movement
+        mars_rover.turn_left()
+        mars_rover.move()
+        self.assertEqual(mars_rover.coords, (-1, 0))
+        mars_rover.reset()
+        # test right movement
+        mars_rover.turn_right()
+        mars_rover.move()
+        self.assertEqual(mars_rover.coords, (1, 0))
+        mars_rover.reset()
+
+
