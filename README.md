@@ -1,6 +1,6 @@
 ## Mars Rover
 
-[logo](https://travis-ci.org/jaywhy13/Mars-Rover.svg?branch=master)
+![logo] (https://travis-ci.org/jaywhy13/Mars-Rover.svg?branch=master)
 
 # Running the code
 
