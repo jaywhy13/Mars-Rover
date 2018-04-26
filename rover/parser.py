@@ -6,6 +6,11 @@ from rover.constants import (
     ACTION_MOVE
 )
 
+try:
+   input = raw_input
+except NameError:
+   pass
+
 
 class Parser(object):
 
