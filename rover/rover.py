@@ -14,8 +14,9 @@ class Rover(object):
     """
 
     def __init__(self, x=0, y=0, heading=HEADING_NORTH, plateau=None):
-        self.x = x
-        self.y = y
+        self.x = int(x)
+        self.y = int(y)
+        assert heading in DIRECTIONS, "Please provide a valid direction"
         self.heading = heading
         self.plateau = plateau
 
