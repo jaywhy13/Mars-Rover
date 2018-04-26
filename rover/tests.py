@@ -1,8 +1,8 @@
 import unittest
 
-from rover.constraint import Constraint
-from rover.rover import Rover
-from rover.constants import (
+from constraint import Constraint
+from rover import Rover
+from constants import (
     HEADING_NORTH,
     HEADING_EAST,
     HEADING_SOUTH,
@@ -11,8 +11,8 @@ from rover.constants import (
     ACTION_RIGHT,
     ACTION_MOVE
 )
-from rover.plateau import Plateau, BoundaryConstraint
-from rover.parser import Parser
+from plateau import Plateau, BoundaryConstraint
+from parser import Parser
 
 
 class TestRover(unittest.TestCase):
