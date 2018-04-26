@@ -1,15 +1,17 @@
 ## Mars Rover
 
+[logo](https://travis-ci.org/jaywhy13/Mars-Rover.svg?branch=master)
+
 # Running the code
 
 ```
-python main.py
+python rover/main.py
 ```
 
 # Running tests
 
 ```
-python tests.py
+python rover/tests.py
 ```
 
 # Description
