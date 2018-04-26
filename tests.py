@@ -137,3 +137,9 @@ class TestParser(unittest.TestCase):
         self.assertEqual(mars_rover.coords.y, 1)
 
 
+class TestConstraint(unittest.TestCase):
+
+    def test_default_constraint(self):
+        constraint = Constraint()
+        self.assertTrue(constraint.can_move())
+
