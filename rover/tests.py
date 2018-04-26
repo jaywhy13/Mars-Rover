@@ -23,6 +23,12 @@ class TestRover(unittest.TestCase):
         self.assertEqual(mars_rover.y, 0)
         self.assertEqual(mars_rover.heading, HEADING_NORTH)
 
+    def test_inputs(self):
+        with self.assertRaises(ValueError):
+            Rover(x="abc")
+        with self.assertRaises(ValueError):
+            Rover(y="abc")
+
     def test_rotation(self):
         mars_rover = Rover()
         expected_headings = [
