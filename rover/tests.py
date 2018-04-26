@@ -142,6 +142,23 @@ class TestParser(unittest.TestCase):
             rover=mars_rover, instruction=ACTION_MOVE)
         self.assertEqual(mars_rover.coords.y, 1)
 
+    def test_parser_regexes(self):
+        params = self.parser.parse_input_with_regex(
+            text="Plateau:10 100",
+            regex=Parser.PLATEAU_INPUT)
+        self.assertEqual(params.get("x"), "10")
+        self.assertEqual(params.get("y"), "100")
+        params = self.parser.parse_input_with_regex(
+            text="Rover1 Landing:10 100 S",
+            regex=Parser.ROVER_LANDING_INPUT)
+        self.assertEqual(params.get("x"), "10")
+        self.assertEqual(params.get("y"), "100")
+        self.assertEqual(params.get("heading"), "S")
+        params = self.parser.parse_input_with_regex(
+            text="Rover1 Instructions:LRM",
+            regex=Parser.ROVER_INSTRUCTIONS_INPUT)
+        self.assertEqual(params.get("instructions"), "LRM")
+
 
 class TestConstraint(unittest.TestCase):
 
